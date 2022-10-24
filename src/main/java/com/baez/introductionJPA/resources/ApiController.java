@@ -49,6 +49,13 @@ public class ApiController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @DeleteMapping(value = "/students/{idStudent}")
+    public ResponseEntity<Student> deleteStudent(
+            @PathVariable(value = "idStudent") Integer idStudent
+    ) {
+        return new ResponseEntity<>(serviceLayer.deleteStudentById(idStudent), HttpStatus.OK);
+    }
+
     // SUBJECTS ENDPOINTS ----------------------------------------------------------------------------------
 
     @GetMapping(value = "/subjects")

@@ -56,6 +56,18 @@ public class ServiceLayer {
         }
     }
 
+    @Transactional
+    public Student deleteStudentById(Integer idStudent) {
+        try {
+            Student studentFound = studentRepository.findById(idStudent)
+                    .orElseThrow(() -> new RuntimeException("Estudiante no encontrado"));
+            studentRepository.delete(studentFound);
+            return studentFound;
+        } catch (Exception e) {
+            throw new RuntimeException("No fue posible eliminar el estudiante");
+        }
+    }
+
 
     // SUBJECTS SERVICES ---------------------------------------------------------------------------------
 
