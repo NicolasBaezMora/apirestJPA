@@ -16,7 +16,8 @@ import java.util.List;
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "seqIdStudent", sequenceName = "seq_id_student", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqIdStudent")
     private Integer id;
 
     @Column(nullable = false, length = 100)

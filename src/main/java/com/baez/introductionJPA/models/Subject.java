@@ -14,7 +14,8 @@ import javax.persistence.*;
 public class Subject {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "seqIdSubject", sequenceName = "seq_id_subject", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqIdSubject")
     private Integer id;
 
     @Column(nullable = false, length = 100)
